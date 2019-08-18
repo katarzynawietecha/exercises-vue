@@ -1,33 +1,26 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import shop from '@/api/shop'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
+  // data
   state: {
-    products: [],
-  },
-  getters: {
-    availableProducts (state, getters) {
-      return state.products.filter(product => product.inventory > 0)
-    }
-  },
-  actions: {
-    fetchProducts ({commit}) {
-      // make the call
-      return new Promise((resolve, reject) => {
-        shop.getProducts(products => {
-          commit('setProducts', products)
-          resolve()
-        })
-      })
-    }
+    apple: 80,
+    banana: 5,
+    other: 'milk'
   },
   mutations: {
-    setProducts (state, products) {
-      // update products
-      state.products = products
+    updateApple (state, payload) {
+      state.apple = payload
+    },
+    updateBanana (state, payload) {
+      state.banana = payload
+    },
+    updateOther (state, payload) {
+      state.other = payload
     }
   }
 })
+
+export default store
