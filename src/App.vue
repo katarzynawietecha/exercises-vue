@@ -19,4 +19,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.custom-box {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid black;
+}
 </style>

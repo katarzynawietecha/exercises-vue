@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>Home</h1>
     <router-link to="/about">Go to about page</router-link>
 
@@ -45,11 +45,6 @@ h1, h2 {
 }
 a {
   color: #42b983;
-}
-.custom-box {
-  margin: 20px 0;
-  padding: 20px;
-  border: 1px solid black;
 }
 .baskets {
   border-color: lightblue;
