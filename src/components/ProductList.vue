@@ -1,10 +1,11 @@
 <template>
   <div>
     <h1>Products</h1>
-    <ul>
+    <img v-if="loading" src="../assets/ajax-loader.gif" alt="spinner" />
+    <ul v-else>
       <li v-for="product in products" :key="product.id">{{ product.title }}: {{ product.price }}
         <div>
-        amound {{ product.inventory }}
+        amount {{ product.inventory }}
       </div>
     </li>
     </ul>
@@ -12,19 +13,23 @@
 </template>
 
 <script>
-import shop from '@/api/shop'
 import store from '@/store/index'
 
 export default {
+  data(){
+    return {
+      loading: false
+    }
+  },
   computed: {
     products () {
-      return store.state.products
+      return store.getters.availableProducts
     }
   },
   created () {
-    shop.getProducts(products => {
-      store.commit('setProducts', products)
-    })
+    this.loading = true
+    store.dispatch('fetchProducts')
+      .then(() => this.loading = false)
   }
 }
 </script>
@@ -35,8 +40,8 @@ export default {
     li {
       border: 1px solid lightblue;
       margin: 10px;
-      display: block;
-
+      display: inline-block;
+      width: 250px;
     }
   }
 </style>
