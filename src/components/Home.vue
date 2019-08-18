@@ -2,9 +2,19 @@
   <div class="hello">
     <h1>Home</h1>
     <router-link to="/about">Go to about page</router-link>
-    <div class="baskets">
+
+    <div class="baskets custom-box">
       <h2>Vuex</h2>
       <List/><Basket1/><Basket2/>
+    </div>
+
+    <div class="slots custom-box">
+      <h2>Slot</h2>
+      <Animal>
+        Tiger is a dangerous animal!
+      </Animal><SmallAnimal>
+        Hamster
+      </SmallAnimal>
     </div>
 
   </div>
@@ -14,16 +24,17 @@
 import Basket1 from '@/components/Basket1'
 import Basket2 from '@/components/Basket2'
 import List from '@/components/List'
+import Animal from '@/components/Animal'
+import SmallAnimal from '@/components/SmallAnimal'
 
 export default {
   name: 'Home',
-  data () {
-    return {}
-  },
   components: {
     List,
     Basket1,
-    Basket2
+    Basket2,
+    Animal,
+    SmallAnimal
   }
 }
 </script>
@@ -35,10 +46,13 @@ h1, h2 {
 a {
   color: #42b983;
 }
-.baskets {
+.custom-box {
   margin: 20px 0;
   padding: 20px;
-  border: 1px solid lightblue;
+  border: 1px solid black;
+}
+.baskets {
+  border-color: lightblue;
   & > div {
     display: inline-block;
     padding: 30px;
@@ -51,5 +65,12 @@ a {
 }
 ul {
   text-align: left;
+}
+.slots {
+  border-color: lightgreen;
+  & > div {
+    display: inline-block;
+    width: 50%;
+  }
 }
 </style>
