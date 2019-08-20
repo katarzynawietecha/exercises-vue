@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is a about page</h1>
+    <h1>About</h1>
     <router-link to="/">Back to homepage</router-link>
 
     <div class="transition custom-box">
@@ -11,15 +11,24 @@
       </transition>
     </div>
 
+    <div class="unit-tests custom-box">
+        <DescriptionAbout :propstext='`This text is a prop.`' />
+    </div>
+
   </div>
 </template>
 
 <script>
+import DescriptionAbout from '@/components/DescriptionAbout'
+
 export default {
   data () {
     return {
       show: true
     }
+  },
+  components: {
+    DescriptionAbout
   }
 }
 </script>
